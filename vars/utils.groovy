@@ -32,7 +32,7 @@ Map getConfig(key = null) {
     isMasterBranch: isMasterBranch,
     masterBranch: masterBranch,
     mavenConfigId: env.MAVEN_CONFIG_ID ?: 'globalmaven',
-    namespace: env.NAMESPACE ?: 'codeveros',
+    namespace: env.NAMESPACE ?: "codeveros-${UUID.randomUUID().toString()}",
     nexusHelm: envVarExists('NEXUS_HELM') ? toBoolean(env.NEXUS_HELM) : true,
     pushBranchTag: envVarExists('PUSH_BRANCH_TAG') ? toBoolean(env.PUSH_BRANCH_TAG) : !isMasterBranch,
     pushChartOverrides: envVarExists('PUSH_CHART_OVERRIDES') ? toBoolean(env.PUSH_CHART_OVERRIDES) : isMasterBranch,

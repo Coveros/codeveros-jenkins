@@ -1,8 +1,7 @@
 def call(Map config = [:]) {
 
   Map defaultConfig = [
-    depOverrides: [],
-    namespace: "codeveros-${UUID.randomUUID().toString()}",
+    depOverrides: []
   ]
 
   config = defaultConfig + config

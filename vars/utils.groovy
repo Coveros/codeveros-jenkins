@@ -25,6 +25,7 @@ Map getConfig(key = null) {
     codeverosChartPath: env.CODEVEROS_CHART_PATH ?: 'charts/codeveros',
     dockerfilePath: env.DOCKERFILE_PATH ?: '.',
     environment: env.ENVIRONMENT ?: 'ephemeral',
+    externalIp: env.EXTERNAL_IP,
     functionalTestsPath: env.FUNCTIONAL_TESTS_PATH ?: 'tests/selenified',
     gitCredentials: env.GIT_CREDENTIALS ?: 'codeveros-gitlab-ssh',
     helmCredentials: env.HELM_CREDENTIALS ?: 'docker-registry-login',

@@ -14,7 +14,7 @@ def call(Map config = [:]) {
         overrideChartDeps config.depOverrides
         addHelmRepos() // required for helm dependency update run during production deploy
         installHelmChart config.namespace, config.releaseName
-        appUrl = getAppUrl config.namespace, config.releaseName
+        appUrl = getAppUrl config.externalIp, config.namespace, config.releaseName
       }
     }
 
@@ -88,7 +88,7 @@ def call(Map config = [:]) {
       // We would normally deploy a chart that was pushed
       dir(config.codeverosChartPath) {
         installHelmChart 'prod', config.releaseName
-        getAppUrl 'prod', config.releaseName
+        getAppUrl config.externalIp, 'prod', config.releaseName
       }
     }
 
@@ -125,14 +125,14 @@ void pushChartFile(Map config) {
   }
 }
 
-String getAppUrl(String namespace, String releaseName) {
+String getAppUrl(String externalIp, String namespace, String releaseName) {
   def service = releaseName.contains("codeveros") ? "${releaseName}-proxy" : "${releaseName}-codeveros-proxy"
   def getNodePort = "kubectl -n ${namespace} get svc ${service} -o jsonpath='{.spec.ports[?(@.name==\"http\")].nodePort}'"
   def getNodeIP = "kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type==\"InternalIP\")].address }'"
 
   container('kubectl') {
     def nodePort = sh(returnStdout: true, script: getNodePort).trim()
-    def nodeIP = sh(returnStdout: true, script: getNodeIP).trim()
+    def nodeIP = externalIp ?: sh(returnStdout: true, script: getNodeIP).trim()
     def appUrl = "http://${nodeIP}:${nodePort}/"
     echo "Codeveros is externally available at ${appUrl}"
     return appUrl

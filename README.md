@@ -95,6 +95,7 @@ agent's Pod template.
 | codeverosChartPath   | CODEVEROS_CHART_PATH       | Codeveros Umbrella Chart directory relative to workspace root        | `charts/codeveros`                                |
 | dockerfilePath       | DOCKERFILE_PATH            | Location of Dockerfile                                               | `.`                                               |
 | environment          | ENVIRONMENT                | Defines environment                                                  | `ephemeral`                                       |
+| externalIp           | EXTERNAL_IP                | Specify external IP address for deployed Codeveros access            | K8s Node Internal IP
 | functionalTestsPath  | FUNCTIONAL_TESTS_PATH      | Functional Test directory relative to workspace root                 | `tests/selenified`                                |
 | gitCredentials       | GIT_CREDENTIALS            | Credentials to use for Git repositories                              | `codeveros-gitlab-ssh`                            |
 | helmCredentials      | HELM_CREDENTIALS           | Credentials to use for Helm repository                               | `docker-registry-login`                           |

@@ -2,17 +2,14 @@
 
 ## Usage
 
-This repository is for the shared libraries used within the Codeveros pipelines.
+This repository is for the shared libraries used within the Codeveros pipelines. For an overview
+of what the pipeline does and how it works, refer to [CodeVeros Pipeline](./PIPELINE.md)
 
 The following examples assume it is loaded into Jenkins as "codeveros-library"
 In order to use these shared libraries (methods defined in the "vars" directory) within your "Jenkinsfile" simply add
 this line to the top of your Jenkinsfile:
 
 `library 'codeveros-library'`
-
-## Pipeline Overview
-
-![CodeVeros Pipeline](./images/secureci-pipeline-1.png)
 
 ```
 Directory Structure:

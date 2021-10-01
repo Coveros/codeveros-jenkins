@@ -18,13 +18,21 @@ Figure: Jenkins pipeine steps
 
 ![CodeVeros Pipeline](./images/secureci-pipeline-1.png)
 
+The main entrypoint for the pipeline depends on the type of service you are actually building:
+* [Node Service Pipeline](./vars/runNodeSvcPipeline.groovy) - builds a deploys a NodeJS service
+* TBD: Other services
 
 There are some major steps that should be highlighted:
 
-*Build* - compile your application (e.g., for JavaScript this would be assembling the NPM dependencies)
+*Build* - compile your application (e.g., for JavaScript this would be assembling the NPM dependencies).
+This is kicked off as part of your pipeline entrypoint.
 
 *Static Analysis* - scan your code and dependencies using SonarQube and OWASP Dependency Check to
-find bugs, defects, vulnerabilities, and other quality issues
+find bugs, defects, vulnerabilities, and other quality issues. 
+
+  * [sonarQubeScan()](./vars/sonarQubeScan.groovy) - runs Sonar scanner
+  * [dependencyCheck()](./vars/dependencyCheck.groovy) - runs OWASP Dependency Check
+
 
 *Unit Test* - run unit tests on your code
 

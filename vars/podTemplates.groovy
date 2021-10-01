@@ -109,7 +109,9 @@ def pythonTemplate(Closure body) {
         ttyEnabled: true
       )
     ]
-  )
+  ) {
+    body()
+  }
 }
 
 def allTemplates(Closure body) {

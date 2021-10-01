@@ -10,6 +10,10 @@ this line to the top of your Jenkinsfile:
 
 `library 'codeveros-library'`
 
+## Pipeline Overview
+
+![CodeVeros Pipeline](./images/secureci-pipeline-1.png)
+
 ```
 Directory Structure:
 src

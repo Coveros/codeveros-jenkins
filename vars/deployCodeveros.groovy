@@ -21,14 +21,7 @@ def call(Map config = [:]) {
     stage('Post-Deployment Checks') {
       parallel(
         'Smoke Tests': {
-          try {
-            echo 'Perform smoke test for system viability'
-//              sh "wget ${appUrl}/login &> /dev/null"
-          } catch (err) {
-            echo "Error found running the smoke test."
-            currentBuild.result = 'FAILURE'
-            throw err
-          }
+          smokeTest(appUrl)
         },
         'Integration Tests': {
           echo 'Run integration tests'
@@ -182,7 +175,10 @@ void runPerformanceTests() {
 }
 
 void runApiTests(String appUrl, Map config) {
-  echo 'Run API tests'
+  container('python') {
+    sh 'pip install requests'
+    sh "python fizzbuzz.py $appUrl"
+  }
 }
 
 void runRegressionTests(String appUrl, Map config) {

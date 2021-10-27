@@ -89,7 +89,7 @@ agent's Pod template.
 | input attribute      | Env Var/Config constant    | Description                                                          | Default Value                                     |
 |----------------------|----------------------------|----------------------------------------------------------------------|---------------------------------------------------|
 | agentPvcName         | AGENT_PVC_NAME             | Kubernetes PersistentVolumeClaim id to persist agent cache           | `jenkins-agent`                                   |
-| apiTestsPath         | API_TESTS_PATH             | API Test directory relative to workspace root                        | `tests/selenified`                                |
+| apiTestsPath         | API_TESTS_PATH             | API Test directory relative to workspace root                        | `tests/api`                                |
 | chartPath            | CHART_PATH                 | Location of Helm Chart directory                                     | `./helm`                                          |
 | cleanupDeploy        | CLEANUP_DEPLOY             | Delete the Helm chart release and namespace when testing is complete | `true`                                            |
 | codeverosChartPath   | CODEVEROS_CHART_PATH       | Codeveros Umbrella Chart directory relative to workspace root        | `charts/codeveros`                                |

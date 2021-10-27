@@ -99,6 +99,21 @@ def taurusTemplate(Closure body) {
   }
 }
 
+def pythonTemplate(Closure body) {
+  podTemplate(
+    containers: [
+      containerTemplate(
+        name: 'python',
+        image: 'python:latest',
+        command: 'cat',
+        ttyEnabled: true
+      )
+    ]
+  ) {
+    body()
+  }
+}
+
 def allTemplates(Closure body) {
   dockerTemplate {
     nodejsTemplate {
@@ -108,7 +123,9 @@ def allTemplates(Closure body) {
             kubectlTemplate {
               owaspZapTemplate {
                 taurusTemplate {
-                  body()
+                  pythonTemplate {
+                    body()
+                  }
                 }
               }
             }

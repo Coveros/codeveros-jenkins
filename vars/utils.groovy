@@ -19,7 +19,7 @@ Map getConfig(key = null) {
 
   def config = [
     agentPvcName: env.AGENT_PVC_NAME ?: 'jenkins-agent',
-    apiTestsPath: env.API_TESTS_PATH ?: 'tests/selenified',
+    apiTestsPath: env.API_TESTS_PATH ?: 'tests/api',
     chartPath: env.CHART_PATH ?: './helm',
     cleanupDeploy: envVarExists('CLEANUP_DEPLOY') ? env.CLEANUP_DEPLOY : true,
     codeverosChartPath: env.CODEVEROS_CHART_PATH ?: 'charts/codeveros',

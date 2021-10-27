@@ -1,6 +1,6 @@
 ## Pipeline Overview
 
-The CodeVeros Jenkins pipeline has a series of build, deploy, and test functions built into
+The Codeveros Jenkins pipeline has a series of build, deploy, and test functions built into
 it by default. The pipeline supports:
 
 * Docker container images
@@ -16,7 +16,7 @@ it by default. The pipeline supports:
 Figure: Jenkins pipeine steps
 </div>
 
-![CodeVeros Pipeline](./images/secureci-pipeline-1.png)
+![Codeveros Pipeline](./images/secureci-pipeline-1.png)
 
 The main entrypoint for the pipeline depends on the type of service you are actually building:
 * [Node Service Pipeline](./vars/runNodeSvcPipeline.groovy) - builds a deploys a NodeJS service

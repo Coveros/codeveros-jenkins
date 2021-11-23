@@ -176,8 +176,10 @@ void runPerformanceTests() {
 
 void runApiTests(String appUrl, Map config) {
   container('python') {
-    sh 'pip install requests'
-    sh "python fizzbuzz.py $appUrl"
+    sh 'pip install -r requirements.txt'
+    withEnv(["APP_URL=${appUrl}"]) {
+      sh "python -m unittest discover"
+    }
   }
 }
 

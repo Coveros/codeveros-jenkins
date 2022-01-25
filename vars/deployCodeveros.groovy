@@ -21,7 +21,7 @@ def call(Map config = [:]) {
     stage('Post-Deployment Checks') {
       parallel(
         'Smoke Tests': {
-          smokeTest(appUrl)
+          echo 'Smoke test'
         },
         'Integration Tests': {
           echo 'Run integration tests'
